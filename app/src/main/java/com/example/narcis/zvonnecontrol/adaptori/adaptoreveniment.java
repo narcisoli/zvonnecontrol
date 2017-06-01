@@ -28,6 +28,7 @@ public class adaptoreveniment extends ArrayAdapter<eveniment> {
         super(context, layoutResource, evenimentList);
         this.layoutResource = layoutResource;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         view = convertView;
@@ -37,17 +38,17 @@ public class adaptoreveniment extends ArrayAdapter<eveniment> {
         }
         loc = getItem(position);
         if (loc != null) {
-            TextView tip=(TextView)view.findViewById(R.id.pizzanume);
-            TextView ingrediente=(TextView)view.findViewById(R.id.pizzaingrediente);
-            tip.setText(loc.getTip());
-            ingrediente.setText(loc.get());
-            TextView b1=(TextView) view.findViewById(R.id.butonpizza);
-            TextView gramaj=(TextView) view.findViewById(R.id.pizzzagramaj);
-            gramaj.setText(loc.getGramaj());
-            b1.setText(loc.getPret()+" lei");
-
+            TextView text1 = (TextView) view.findViewById(R.id.textev1);
+            TextView text2 = (TextView) view.findViewById(R.id.textev2);
+            TextView text3 = (TextView) view.findViewById(R.id.textev3);
+            TextView text4 = (TextView) view.findViewById(R.id.textev4);
+            text1.setText(loc.getId() + "");
+            text2.setText(loc.getData());
+            text3.setText(loc.getNume());
+            text4.setText(loc.getDetalii());
         }
 
         return view;
     }
+}
 

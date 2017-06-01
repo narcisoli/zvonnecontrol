@@ -23,13 +23,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EvenimentActivity extends AppCompatActivity {
 
     private ListView listView;
     private List<eveniment> evenimentList = new ArrayList<>();
-    private adaptorpizza adaptor;
+    private adaptoreveniment adaptor;
     private DatabaseReference db;
     private DatabaseReference aux;
 
@@ -38,7 +39,7 @@ public class EvenimentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pizza);
         listView = (ListView) findViewById(R.id.listapizza);
-        adaptor = new adaptoreveniment(this, R.layout.adaptorpizza, evenimentList);
+        adaptor = new adaptoreveniment(this, R.layout.adaptoreveniment, evenimentList);
         listView.setAdapter(adaptor);
         db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Evenimente");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,7 +56,7 @@ public class EvenimentActivity extends AppCompatActivity {
                             public void onItemSelected(int position1, String item) {
                                 if (position1 == 0) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(EvenimentActivity.this);
-                                    builder.setMessage("Editezi nume : "+evenimentList.get(position).getId());
+                                    builder.setMessage("Editezi nume : "+evenimentList.get(position).getTip());
                                     final EditText input = new EditText(EvenimentActivity.this);
                                     builder.setView(input);
                                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -77,13 +78,8 @@ public class EvenimentActivity extends AppCompatActivity {
 
                                         @Override
                                         public void onClick(DialogInterface dialog, int whichButton) {
-                                            int myNum = 0;
-                                            try {
-                                                myNum = Integer.parseInt(input.getText().toString());
-                                            } catch(NumberFormatException nfe) {
-                                                Toast.makeText(EvenimentActivity.this, "Pretul trebuie sa fie un numar!", Toast.LENGTH_SHORT).show();
-                                            }
-                                            aux.child("data").setValue(myNum);
+
+                                            aux.child("data").setValue(input.getText().toString());
                                         }
                                     });
 
@@ -128,14 +124,15 @@ public class EvenimentActivity extends AppCompatActivity {
             }
         });
 
-        db.addValueEventListener(new ValueEventListener() {
+        db.limitToLast(10).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                pizzaList.clear();
+                evenimentList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    pizza aux = ds.getValue(pizza.class);
-                    pizzaList.add(aux);
+                    eveniment aux = ds.getValue(eveniment.class);
+                    evenimentList.add(aux);
                 }
+                Collections.reverse(evenimentList);
                 adaptor.notifyDataSetChanged();
             }
 

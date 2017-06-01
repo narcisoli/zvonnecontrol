@@ -8,4 +8,12 @@
 
 
     </string-array>
+    <string-array name="optiunieveniment">
+        <item>Editaza nume</item>
+        <item>Editaza data</item>
+        <item>Editaza detalii</item>
+        <item>Sterge</item>
+
+
+    </string-array>
 </resources>

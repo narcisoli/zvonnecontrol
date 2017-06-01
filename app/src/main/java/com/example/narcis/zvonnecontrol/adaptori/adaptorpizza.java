@@ -43,6 +43,8 @@ public class adaptorpizza extends ArrayAdapter<pizza>  {
             tip.setText(loc.getTip());
             ingrediente.setText(loc.getIngrediente());
             TextView b1=(TextView) view.findViewById(R.id.butonpizza);
+            TextView gramaj=(TextView) view.findViewById(R.id.pizzzagramaj);
+            gramaj.setText(loc.getGramaj());
             b1.setText(loc.getPret()+" lei");
 
         }

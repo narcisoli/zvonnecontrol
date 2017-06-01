@@ -2,6 +2,7 @@ package com.example.narcis.zvonnecontrol;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,12 +34,20 @@ public class EvenimentActivity extends AppCompatActivity {
     private adaptoreveniment adaptor;
     private DatabaseReference db;
     private DatabaseReference aux;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pizza);
-        listView = (ListView) findViewById(R.id.listapizza);
+        setContentView(R.layout.activity_eveniment);
+        fab=(FloatingActionButton)findViewById(R.id.fabevenimente);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EvenimentActivity.this,adaugaeveniment.class));
+            }
+        });
+        listView = (ListView) findViewById(R.id.listaevenimente);
         adaptor = new adaptoreveniment(this, R.layout.adaptoreveniment, evenimentList);
         listView.setAdapter(adaptor);
         db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Evenimente");
@@ -143,7 +152,5 @@ public class EvenimentActivity extends AppCompatActivity {
         });
     }
 
-    public void fab(View view) {
-        startActivity(new Intent(this,adaugapizza.class));
-    }
+
 }

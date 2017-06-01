@@ -18,7 +18,13 @@
         </activity>
         <activity android:name=".pizzaActivity" />
         <activity android:name=".adaugapizza" />
-        <activity android:name=".EvenimentActivity"></activity>
+        <activity android:name=".EvenimentActivity" />
+        <activity android:name=".adaugaeveniment" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

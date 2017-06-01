@@ -22,7 +22,9 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
         android:id="@+id/fab"
-        app:fabSize="mini"
+        app:fabSize="normal"
+        android:scaleX=".8"
+        android:scaleY=".8"
         />
     <Button
         android:layout_width="wrap_content"

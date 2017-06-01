@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="optiunipizza">
+        <item>Editaza ingrediente</item>
+        <item>Editaza pret</item>
+        <item>Editaza gramaj</item>
+        <item>Sterge</item>
+
+
+    </string-array>
+</resources>

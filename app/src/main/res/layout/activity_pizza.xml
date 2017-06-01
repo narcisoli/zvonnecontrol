@@ -15,7 +15,9 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fabSize="mini"
+        app:fabSize="normal"
+        android:scaleX=".8"
+        android:scaleY=".8"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"

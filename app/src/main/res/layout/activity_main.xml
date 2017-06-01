@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.narcis.zvonnecontrol.MainActivity">
+
+   <Button
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Evenimente"
+       android:textSize="10dp"
+       android:id="@+id/butonevenimente"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oferte"
+        android:textSize="10dp"
+        android:id="@+id/butonoferta"
+        android:onClick="oferta"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meniu"
+        android:textSize="10dp"
+        android:onClick="meniu"
+        android:id="@+id/buttonpizza"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listacomenzi"
+        android:layout_above="@id/butonoferta"
+        android:layout_height="match_parent">
+
+    </ListView>
+</RelativeLayout>

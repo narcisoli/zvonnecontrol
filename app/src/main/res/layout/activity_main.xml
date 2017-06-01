@@ -7,14 +7,31 @@
     android:layout_height="match_parent"
     tools:context="com.example.narcis.zvonnecontrol.MainActivity">
 
-   <Button
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Evenimente"
-       android:textSize="10dp"
-       android:id="@+id/butonevenimente"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentLeft="true"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listacomenzi"
+        android:layout_height="match_parent">
+
+
+    </ListView>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:id="@+id/fab"
+        app:fabSize="mini"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Evenimente"
+        android:textSize="10dp"
+        android:id="@+id/butonevenimente"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/fab"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,8 +39,8 @@
         android:textSize="10dp"
         android:id="@+id/butonoferta"
         android:onClick="oferta"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/butonevenimente"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,13 +48,6 @@
         android:textSize="10dp"
         android:onClick="meniu"
         android:id="@+id/buttonpizza"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
-    <ListView
-        android:layout_width="match_parent"
-        android:id="@+id/listacomenzi"
-        android:layout_above="@id/butonoferta"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/butonoferta"/>
 </RelativeLayout>

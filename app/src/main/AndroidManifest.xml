@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pizzaActivity"></activity>
+        <activity android:name=".pizzaActivity" />
+        <activity android:name=".adaugapizza"></activity>
     </application>
 
 </manifest>

@@ -3,12 +3,14 @@ package com.example.narcis.zvonnecontrol;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
     private List<coman> comanList = new ArrayList<>();
     private adaptorcomanda a;
     private RelativeLayout relativeLayout;
+    private FloatingActionButton fab;
+    boolean aBoolean=true;
+    private Button butonmeniu;
+    private Button butonoferta;
+    private Button butonevenimente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,34 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listacomenzi);
         a = new adaptorcomanda(this, R.layout.adaptorcomanda, comanList);
         listView.setAdapter(a);
+
+        fab=(FloatingActionButton)findViewById(R.id.fab);
+        butonmeniu=(Button)findViewById(R.id.buttonpizza);
+        butonoferta=(Button)findViewById(R.id.butonoferta);
+        butonevenimente=(Button)findViewById(R.id.butonevenimente);
+        butonevenimente.setVisibility(View.GONE);
+        butonoferta.setVisibility(View.GONE);
+        butonmeniu.setVisibility(View.GONE);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(aBoolean){
+                    butonevenimente.setVisibility(View.VISIBLE);
+                    butonoferta.setVisibility(View.VISIBLE);
+                    butonmeniu.setVisibility(View.VISIBLE);
+                    aBoolean=false;
+                }
+                else{
+                    butonevenimente.setVisibility(View.GONE);
+                    butonoferta.setVisibility(View.GONE);
+                    butonmeniu.setVisibility(View.GONE);
+                    aBoolean=true;
+                }
+            }
+        });
+
+
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");

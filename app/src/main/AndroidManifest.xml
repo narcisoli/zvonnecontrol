@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".pizzaActivity" />
-        <activity android:name=".adaugapizza"></activity>
+        <activity android:name=".adaugapizza" />
+        <activity android:name=".EvenimentActivity"></activity>
     </application>
 
 </manifest>

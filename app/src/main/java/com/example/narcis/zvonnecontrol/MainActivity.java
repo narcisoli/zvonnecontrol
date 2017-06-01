@@ -204,4 +204,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
+
+    public void evenimente(View view) {
+        startActivity(new Intent(this,EvenimentActivity.class));
+    }
 }

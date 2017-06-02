@@ -47,32 +47,34 @@ public class MyService extends Service {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
         String formattedDate = df.format(c.getTime());
-        Query query = db.orderByChild("nume").equalTo(formattedDate);
+        Query query = db.orderByChild("data").equalTo(formattedDate);
         query.addChildEventListener(new ChildEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 notif();
+                Log.i("Firebase","Child add");
+
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                Log.i("Firebase","Child changed");
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                Log.i("Firebase","Child remove");
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                Log.i("Firebase","Child moved");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("Firebase","Child canceled");
             }
         });
     }

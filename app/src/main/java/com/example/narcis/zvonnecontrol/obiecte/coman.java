@@ -8,8 +8,28 @@ public class coman {
     String text;
     String nume;
     String data;
+    String nrdetelefon;
     int id;
+    int status;
+
     public coman(){}
+    public coman(String text, String nume, String data, int status, int id,String numar) {
+        this.text = text;
+        this.nume = nume;
+        this.data = data;
+        this.status = status;
+        this.id=id;
+        this.nrdetelefon=numar;
+    }
+
+    public String getNrdetelefon() {
+        return nrdetelefon;
+    }
+
+    public void setNrdetelefon(String nrdetelefon) {
+        this.nrdetelefon = nrdetelefon;
+    }
+
     public String getText() {
         return text;
     }
@@ -42,21 +62,11 @@ public class coman {
         this.status = status;
     }
 
-    int status;
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public coman(String text, String nume, String data, int status, int id) {
-        this.text = text;
-        this.nume = nume;
-        this.data = data;
-        this.status = status;
-        this.id=id;
     }
 }

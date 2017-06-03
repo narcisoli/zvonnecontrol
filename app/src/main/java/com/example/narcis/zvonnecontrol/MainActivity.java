@@ -107,6 +107,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri number = Uri.parse("tel:"+comanList.get(position).getNrdetelefon());
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(callIntent);
+                return false;
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -190,41 +199,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    protected void onDestroy() {
-        notif();
-        super.onDestroy();
-
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void notif () {
-
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this,
-                0, notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationManager nm = (NotificationManager) this
-                .getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        Notification.Builder builder = new Notification.Builder(this);
-        Resources res = this.getResources();
-        builder.setContentIntent(contentIntent)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setTicker("Ticker")
-                .setWhen(System.currentTimeMillis())
-                .setAutoCancel(true)
-                .setContentTitle("Zvonne Control App")
-                .setContentText("Serviciul s-a oprit");
-        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        builder.setSound(alarmSound);
-        Notification n = builder.build();
-
-        nm.notify(1, n);
-
-    }
 
     public void meniu(View view) {
         startActivity(new Intent(this, pizzaActivity.class));

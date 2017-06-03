@@ -80,6 +80,13 @@ public class MyService extends Service {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onDestroy() {
+        notif1();
+        super.onDestroy();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void notif() {
         if (bool) {
             Intent notificationIntent = new Intent(this, MainActivity.class);
@@ -107,5 +114,33 @@ public class MyService extends Service {
 
             nm.notify(1, n);
         } else bool = true;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void notif1 () {
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,
+                0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationManager nm = (NotificationManager) this
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        Notification.Builder builder = new Notification.Builder(this);
+        Resources res = this.getResources();
+        builder.setContentIntent(contentIntent)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setTicker("Ticker")
+                .setWhen(System.currentTimeMillis())
+                .setAutoCancel(true)
+                .setContentTitle("Zvonne Control App")
+                .setContentText("Serviciul s-a oprit");
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        builder.setSound(alarmSound);
+        Notification n = builder.build();
+
+        nm.notify(1, n);
+
     }
 }

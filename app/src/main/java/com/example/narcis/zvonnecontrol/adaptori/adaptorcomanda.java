@@ -41,7 +41,9 @@ public class adaptorcomanda extends ArrayAdapter<coman> {
 
         }
         TextView data = (TextView) view.findViewById(R.id.adaptorrezervaredata);
+        TextView numar = (TextView) view.findViewById(R.id.numar);
         TextView detalii = (TextView) view.findViewById(R.id.adaptorrezervaredetalii);
+
         TextView status = (TextView) view.findViewById(R.id.adaptoristoricstatus);
 
 
@@ -49,9 +51,11 @@ public class adaptorcomanda extends ArrayAdapter<coman> {
 
         if (loc != null) {
             data.setText(loc.getData());
-            detalii.setText(loc.getText());
+            numar.setText(loc.getNrdetelefon());
+            detalii.setText(loc.getText()+"\n"+loc.getNume());
             if (loc.getStatus() == 1)
                 status.setText("Neconfirmata");
+            status.setTextColor(Color.WHITE);
             if (loc.getStatus() == 2) {
                 status.setText("Confirmata");
                 status.setTextColor(Color.CYAN);

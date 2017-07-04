@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,35 +61,14 @@ public class MainActivity extends AppCompatActivity {
         a = new adaptorcomanda(this, R.layout.adaptorcomanda, comanList);
         listView.setAdapter(a);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        butonmeniu = (Button) findViewById(R.id.buttonpizza);
-        butonoferta = (Button) findViewById(R.id.butonoferta);
-        butonevenimente = (Button) findViewById(R.id.butonevenimente);
-        butonevenimente.setVisibility(View.GONE);
-        butonoferta.setVisibility(View.GONE);
-        butonmeniu.setVisibility(View.GONE);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (aBoolean) {
-                    butonevenimente.setVisibility(View.VISIBLE);
-                    butonoferta.setVisibility(View.VISIBLE);
-                    butonmeniu.setVisibility(View.VISIBLE);
-                    aBoolean = false;
-                } else {
-                    butonevenimente.setVisibility(View.GONE);
-                    butonoferta.setVisibility(View.GONE);
-                    butonmeniu.setVisibility(View.GONE);
-                    aBoolean = true;
-                }
-            }
-        });
+
 
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
         String formattedDate = df.format(c.getTime());
         Query query = db.orderByChild("data").equalTo(formattedDate);
         query.addValueEventListener(new ValueEventListener() {
@@ -99,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     coman aux = ds.getValue(coman.class);
                     comanList.add(aux);
                 }
+                Collections.reverse(comanList);
                 a.notifyDataSetChanged();
             }
 

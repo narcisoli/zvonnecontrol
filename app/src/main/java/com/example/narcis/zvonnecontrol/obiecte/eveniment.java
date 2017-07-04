@@ -9,7 +9,7 @@ public class eveniment {
     String nume;
     String data;
     String detalii;
-    int id;
+    long id;
     int tip;
 
     public String getNume() {
@@ -36,11 +36,11 @@ public class eveniment {
         this.detalii = detalii;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -56,7 +56,7 @@ public class eveniment {
 
     }
 
-    public eveniment(String nume, String data, String detalii, int id, int tip) {
+    public eveniment(String nume, String data, String detalii, long id, int tip) {
         this.nume = nume;
         this.data = data;
         this.detalii = detalii;

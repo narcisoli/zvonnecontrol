@@ -44,7 +44,7 @@ public class adaugaeveniment extends AppCompatActivity {
     private Uri filePath;
     private Bitmap bitmap;
     private ProgressDialog pd;
-    private int nreveniment = 0;
+    private long nreveniment = 0;
     private DatabaseReference nrref;
 
     @Override
@@ -52,18 +52,8 @@ public class adaugaeveniment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.adaugaeveniment);
-        nrref=FirebaseDatabase.getInstance().getReference().child("Zvonne").child("nrevenimente");
-        nrref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                nreveniment=dataSnapshot.getValue(Integer.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        nrref = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("nrevenimente");
+        nreveniment = System.currentTimeMillis();
         pd = new ProgressDialog(this);
         pd.setMessage("Se incarca....");
         butonadauga = (Button) findViewById(R.id.butonev1);

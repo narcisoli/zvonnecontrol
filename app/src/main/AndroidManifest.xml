@@ -21,11 +21,15 @@
         <activity android:name=".adaugapizza" />
         <activity android:name=".EvenimentActivity" />
         <activity android:name=".adaugaeveniment" />
-
+        <receiver android:name=".MyReceiver" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
         <service
             android:name=".MyService"
             android:enabled="true"
             android:exported="true"></service>
     </application>
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 </manifest>

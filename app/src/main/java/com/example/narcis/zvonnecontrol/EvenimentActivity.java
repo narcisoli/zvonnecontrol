@@ -133,7 +133,7 @@ public class EvenimentActivity extends AppCompatActivity {
             }
         });
 
-        db.limitToLast(10).addValueEventListener(new ValueEventListener() {
+        db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 evenimentList.clear();

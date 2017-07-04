@@ -1,5 +1,8 @@
 package com.example.narcis.zvonnecontrol.obiecte;
 
+/**
+ * Created by Narcis on 12/4/2016.
+ */
 
 public class pizza {
 
@@ -9,19 +12,11 @@ public class pizza {
     private int pret=0;
     private int nrvoturi=0;
     private int nrcomenzi=0;
-    private int nota=0;
+    private float nota=0;
     private int nrbucati=0;
 
 
-    public int getNrvoturi() {
-        return nrvoturi;
-    }
-
-    public void setNrvoturi(int nrvoturi) {
-        this.nrvoturi = nrvoturi;
-    }
-
-    public pizza(String tip, String ingrediente, String gramaj, int pret, int nrcomenzi, int nota) {
+    public pizza(String tip, String ingrediente, String gramaj, int pret, int nrcomenzi, float nota) {
         this.tip = tip;
         this.ingrediente = ingrediente;
         this.gramaj = gramaj;
@@ -32,41 +27,61 @@ public class pizza {
         this.nrvoturi=0;
     }
 
-    public void setNrcomenzi(int nrcomenzi) {
-        this.nrcomenzi = nrcomenzi;
-    }
-
-    public void setNota(int nota) {
-        this.nota = nota;
-    }
-
-
-
     public pizza() {
     }
 
+    public int getNrvoturi() {
+        return nrvoturi;
+    }
 
-
+    public void setNrvoturi(int nrvoturi) {
+        this.nrvoturi = nrvoturi;
+    }
 
     public String getGramaj() {
         return gramaj;
+    }
+
+    public void setGramaj(String gramaj) {
+        this.gramaj = gramaj;
     }
 
     public String getIngrediente() {
         return ingrediente;
     }
 
+    public void setIngrediente(String ingrediente) {
+        this.ingrediente = ingrediente;
+    }
+
     public int getPret(){return pret;}
+
+    public void setPret(int pret) {
+        this.pret = pret;
+    }
+
     public String getTip() {
         return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
     }
 
     public int getNrcomenzi() {
         return nrcomenzi;
     }
 
-    public int getNota() {
+    public void setNrcomenzi(int nrcomenzi) {
+        this.nrcomenzi = nrcomenzi;
+    }
+
+    public float getNota() {
         return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
     }
 
     public int getNrbucati() {
@@ -75,21 +90,5 @@ public class pizza {
 
     public void setNrbucati(int nrbucati) {
         this.nrbucati = nrbucati;
-    }
-
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
-
-    public void setIngrediente(String ingrediente) {
-        this.ingrediente = ingrediente;
-    }
-
-    public void setGramaj(String gramaj) {
-        this.gramaj = gramaj;
-    }
-
-    public void setPret(int pret) {
-        this.pret = pret;
     }
 }

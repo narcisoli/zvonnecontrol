@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
         Calendar c = Calendar.getInstance();
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         String formattedDate = df.format(c.getTime());
